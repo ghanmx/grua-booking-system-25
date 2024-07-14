@@ -1,13 +1,3 @@
-Name: blueprint-release
-SchemaVersion: "1.0"
-Triggers:
-  - Type: PUSH
-    Branches:
-      - main
-  - Type: PUSH
-    Branches:
-      - apply-blueprint-blueprint-builder-02e8e
-      - main
 Actions:
   check_commit:
     Identifier: aws/build@v1
@@ -25,14 +15,14 @@ Actions:
         - Run: COMMIT_MESSAGE="$(git log -n 1 $TRIGGER_COMMIT_ID --oneline)"
         - Run: RELEASE_PREFIX='chore(release):'
         - Run: IS_RELEASE_COMMIT=false
-        - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a
-            release commit' && IS_RELEASE_COMMIT=true; fi
-      Container:
-        Registry: CODECATALYST
-        Image: CodeCatalystLinux_x86_64:2024_03
+        - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a release commit' && IS_RELEASE_COMMIT=true; fi
+    Container:
+      Registry: CODECATALYST
+      Image: CodeCatalystLinux_x86_64:2024_03
     Compute:
       Type: EC2
       Fleet: Linux.x86-64.Large
+
   build_and_commit:
     Identifier: aws/build@v1
     Inputs:
@@ -50,25 +40,33 @@ Actions:
             - "**/*"
     Configuration:
       Steps:
-        - Run: if $IS_RELEASE_COMMIT; then  echo 'This is a release commit, skipping';
-            else chmod +x release.sh && ./release.sh; fi
-      Container:
-        Registry: CODECATALYST
-        Image: CodeCatalystLinux_x86_64:2022_11
+        - Run: if $IS_RELEASE_COMMIT; then  echo 'This is a release commit, skipping'; else chmod +x release.sh && ./release.sh; fi
+    Container:
+      Registry: CODECATALYST
+      Image: CodeCatalystLinux_x86_64:2022_11
     DependsOn:
       - check_commit
+
   publish_blueprint:
     Identifier: aws/publish-blueprint-action@v1
     Inputs:
+      Sources:
+        - WorkflowSource
       Artifacts:
         - codebase
       Variables:
         - Name: IS_RELEASE_COMMIT
           Value: ${check_commit.IS_RELEASE_COMMIT}
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    Configuration:
+      InputArtifactName: codebase
+      PackageJSONPath: package.json
+      TimeoutInSeconds: "120"
+      ArtifactPackagePath: dist/js/*.tgz
     DependsOn:
       - build_and_commit
-    Configuration:
-      ArtifactPackagePath: dist/js/*.tgz
-      PackageJSONPath: package.json
-      InputArtifactName: codebase
-      TimeoutInSeconds: "120"
+      - check_commit
+
+
