@@ -1,0 +1,12 @@
+{
+  "name": "file-reorganizer",
+  "version": "1.0.0",
+  "description": "A script to reorganize files",
+  "main": "reorganize.js",
+  "scripts": {
+    "start": "node reorganize.js"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
+  }
+}

@@ -1,0 +1,879 @@
+.
+|--C:\grua-booking-system-25\.github
+|--|--C:\grua-booking-system-25\.github\workflows
+|--|--|   build.yml
+|--C:\grua-booking-system-25\.gpt_engineer_internals
+|--|   report-url-change.js
+|--C:\grua-booking-system-25\.vscode
+|--|   launch.json
+|--C:\grua-booking-system-25\appModules
+|--C:\grua-booking-system-25\client
+|--|--C:\grua-booking-system-25\client\src
+|--|--|--C:\grua-booking-system-25\client\src\authentication
+|--|--|--|   auth.controller.ts
+|--|--|--|   authentication.domain.facade.ts
+|--|--|--|   authentication.domain.module.ts
+|--|--|--|   authMiddleware.js
+|--|--|--C:\grua-booking-system-25\client\src\components
+|--|--|--|   booking-status.enum.ts
+|--|--|--|   booking.entity.ts
+|--|--|--|   booking.repository.ts
+|--|--|--|   bookings.controller.ts
+|--|--|--|   bookings.module.ts
+|--|--|--|   bookings.service.ts
+|--|--|--|   BookingStatus.jsx
+|--|--|--|   conversation.entity.ts
+|--|--|--|   GoogleMapsRoute.jsx
+|--|--|--|   InstructionsSidebar.jsx
+|--|--|--|   message.entity.ts
+|--|--|--|   Navbar.jsx
+|--|--|--|   room.entity.ts
+|--|--|--|   user.entity.ts
+|--|--|--|   UserLocationMarker.jsx
+|--|--|--C:\grua-booking-system-25\client\src\event
+|--|--|--|   app.module.ts
+|--|--|--|   event.controller.ts
+|--|--|--|   event.service.ts
+|--|--|--|   events.module.ts
+|--|--|--C:\grua-booking-system-25\client\src\integrations
+|--|--|--|--C:\grua-booking-system-25\client\src\integrations\supabase
+|--|--|--|--|   auth.jsx
+|--|--|--|--|   index.js
+|--|--|--|--|   openapi.json
+|--|--|--|--|   supabaseClient.js
+|--|--|--C:\grua-booking-system-25\client\src\pages
+|--|--|--|   About.jsx
+|--|--|--|   BookingForm.jsx
+|--|--|--|   Confirmation.jsx
+|--|--|--|   Contact.jsx
+|--|--|--|   Index.jsx
+|--|--|--|   Payment.jsx
+|--|--|--C:\grua-booking-system-25\client\src\sse
+|--|--|--|   sse.controller.ts
+|--|--|--|   sse.module.ts
+|--|--|--C:\grua-booking-system-25\client\src\towingRequest
+|--|--|--|--C:\grua-booking-system-25\client\src\towingRequest\application
+|--|--|--|--|   towingRequest.application.event.ts
+|--|--|--|--|   towingRequest.application.module.ts
+|--|--|--|--|   towingRequest.controller.ts
+|--|--|--|--|   towingRequest.dto.ts
+|--|--|--|--|   towingRequestByUser.controller.ts
+|--|--|--|   towingRequest.domain.facade.ts
+|--|--|--|   towingRequest.domain.module.ts
+|--|--|--|   towingRequest.entity.ts
+|--|--|--C:\grua-booking-system-25\client\src\user
+|--|--|--|   user.domain.module.ts
+|--|--|   App.jsx
+|--|--|   main.jsx
+|--|   package-lock.json
+|--|   package.json
+|--|   tsconfig.json
+|--C:\grua-booking-system-25\configFiles
+|--|   .gitignore
+|--|   docker-compose.yml
+|--C:\grua-booking-system-25\mainFiles
+|--C:\grua-booking-system-25\modules
+|--|--C:\grua-booking-system-25\modules\userForm
+|--|--|--C:\grua-booking-system-25\modules\userForm\application
+|--|--|--C:\grua-booking-system-25\modules\userForm\domain
+|--|--C:\grua-booking-system-25\modules\vehicleForm
+|--|--|--C:\grua-booking-system-25\modules\vehicleForm\application
+|--|--|--C:\grua-booking-system-25\modules\vehicleForm\domain
+|--C:\grua-booking-system-25\public
+|--|   favicon.ico
+|--C:\grua-booking-system-25\rootFiles
+|--|   .env
+|--|   .eslintrc.cjs
+|--|   Copy-FilesContent.ps1
+|--|   gpt-engineer.toml
+|--|   index.html
+|--|   README.md
+|--|   run.sh
+|--|   vite.config.js
+|--C:\grua-booking-system-25\server
+|--|--C:\grua-booking-system-25\server\dist
+|--|--|--C:\grua-booking-system-25\server\dist\core
+|--|--|--|--C:\grua-booking-system-25\server\dist\core\accessControl
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\accessControl\decorators
+|--|--|--|--|--|   accessControl.role.decorator.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\accessControl\domain
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\accessControl\domain\role
+|--|--|--|--|--|--|   accessControl.role.js
+|--|--|--|--|--|--|   accessControl.role.manager.js
+|--|--|--|--|--|--|   index.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\accessControl\guards
+|--|--|--|--|--|   accessControl.guard.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\accessControl\internal
+|--|--|--|--|--|   accessControl.provider.js
+|--|--|--|--|--|   accessControl.service.js
+|--|--|--|--|--|   accessControl.type.js
+|--|--|--|--|--|   accessControl.validator.js
+|--|--|--|--|   accessControl.js
+|--|--|--|--|   accessControl.module.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\core\authentication
+|--|--|--|--|   authentication.decorator.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\core\configuration
+|--|--|--|--|   configuration.module.js
+|--|--|--|--|   configuration.service.js
+|--|--|--|--|   configuration.service.object.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\core\cookie
+|--|--|--|--|   cookie.module.js
+|--|--|--|--|   cookie.service.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\core\cors
+|--|--|--|--|   cors.module.js
+|--|--|--|--|   cors.service.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\core\database
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\database\configuration
+|--|--|--|--|--|   database.configuration.module.js
+|--|--|--|--|--|   database.configuration.service.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\database\helper
+|--|--|--|--|--|   ColumnNumericTransformer.js
+|--|--|--|--|--|   database.helper.js
+|--|--|--|--|--|   database.helper.module.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\database\migrations
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\database\migrations\scripts
+|--|--|--|--|--|--|   1702305820868-script.js
+|--|--|--|--|--|--|   1702311247028-script.js
+|--|--|--|--|--|   database.migration.module.js
+|--|--|--|--|--|   database.migration.service.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\core\database\setup
+|--|--|--|--|--|   database.setup.module.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\core\exception
+|--|--|--|--|   exception.filter.js
+|--|--|--|--|   exception.js
+|--|--|--|--|   exception.module.js
+|--|--|--|--|   exception.service.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\core\logging
+|--|--|--|--|   index.js
+|--|--|--|--|   logging.interceptor.js
+|--|--|--|--|   logging.module.js
+|--|--|--|--|   logging.service.js
+|--|--|--C:\grua-booking-system-25\server\dist\helpers
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\context
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\date
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\dto
+|--|--|--|--|   dto.helper.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\file
+|--|--|--|--|   file.helper.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\hash
+|--|--|--|--|   hash.helper.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\regex
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\request
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\string
+|--|--|--|--|   string.helper.js
+|--|--|--|--|   string.helper.test.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\helpers\utility
+|--|--|--|--|   index.js
+|--|--|--C:\grua-booking-system-25\server\dist\libraries
+|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\email
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\email\internal
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\email\internal\providers
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\email\internal\providers\mailjet
+|--|--|--|--|--|--|--|   mailjet.provider.js
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\email\internal\providers\nodemailer
+|--|--|--|--|--|--|--|   nodemailer.provider.js
+|--|--|--|--|--|--|   provider.js
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\email\internal\templates
+|--|--|--|--|--|--|   components.js
+|--|--|--|--|--|--|   email.template.service.js
+|--|--|--|--|--|   email.type.js
+|--|--|--|--|   email.module.js
+|--|--|--|--|   email.service.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\event
+|--|--|--|--|   event.module.js
+|--|--|--|--|   event.service.js
+|--|--|--|--|   event.type.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\google
+|--|--|--|--|   google.module.js
+|--|--|--|--|   google.service.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\http
+|--|--|--|--|   http.module.js
+|--|--|--|--|   http.service.js
+|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\logger
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\logger\internal
+|--|--|--|--|--|   datadog.service.js
+|--|--|--|--|--|   winston.service.js
+|--|--|--|--|   index.js
+|--|--|--|--|   logger.js
+|--|--|--|--|   logger.module.js
+|--|--|--|--|   logger.service.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\payment
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\payment\internal
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\payment\internal\providers
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\payment\internal\providers\stripe
+|--|--|--|--|--|--|--|   stripe.provider.js
+|--|--|--|--|--|--|   provider.js
+|--|--|--|--|--|   payment.type.js
+|--|--|--|--|   index.js
+|--|--|--|--|   payment.module.js
+|--|--|--|--|   payment.service.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\socket
+|--|--|--|--|   index.js
+|--|--|--|--|   socket.module.js
+|--|--|--|--|   socket.server.js
+|--|--|--|--|   socket.service.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\upload
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\upload\internal
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\upload\internal\providers
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\upload\internal\providers\aws
+|--|--|--|--|--|--|--|   upload.provider.aws.js
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\libraries\upload\internal\providers\local
+|--|--|--|--|--|--|--|   upload.provider.local.js
+|--|--|--|--|   index.js
+|--|--|--|--|   upload.module.js
+|--|--|--|--|   upload.provider.js
+|--|--|--|--|   upload.service.js
+|--|--|--|--|   upload.type.js
+|--|--|--C:\grua-booking-system-25\server\dist\modules
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authentication
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authentication\application
+|--|--|--|--|--|   authentication.application.event.js
+|--|--|--|--|--|   authentication.application.exception.js
+|--|--|--|--|--|   authentication.application.module.js
+|--|--|--|--|--|   authentication.controller.js
+|--|--|--|--|--|   authentication.dto.js
+|--|--|--|--|--|   authentication.google.controller.js
+|--|--|--|--|--|   index.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authentication\domain
+|--|--|--|--|--|   authentication.domain.facade.js
+|--|--|--|--|--|   authentication.domain.module.js
+|--|--|--|--|--|   index.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authentication\infrastructure
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authentication\infrastructure\guards
+|--|--|--|--|--|--|   authentication.guard.js
+|--|--|--|--|--|--|   authentication.guard.service.js
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authentication\infrastructure\subscribers
+|--|--|--|--|--|--|   authentication.communication.subscriber.js
+|--|--|--|--|--|   authentication.infrastructure.exception.js
+|--|--|--|--|--|   authentication.infrastructure.module.js
+|--|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authorization
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authorization\accessControl
+|--|--|--|--|--|   authorization.accessControl.exception.js
+|--|--|--|--|--|   authorization.accessControl.module.js
+|--|--|--|--|--|   authorization.accessControl.service.js
+|--|--|--|--|--|   index.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authorization\application
+|--|--|--|--|--|   authorization.application.exception.js
+|--|--|--|--|--|   authorization.application.module.js
+|--|--|--|--|--|   authorization.controller.js
+|--|--|--|--|--|   authorization.dto.js
+|--|--|--|--|--|   authorizationByMe.controller.js
+|--|--|--|--|--|   index.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authorization\domain
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authorization\domain\code
+|--|--|--|--|--|--|   authorization.code.facade.js
+|--|--|--|--|--|--|   authorization.code.model.js
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authorization\domain\role
+|--|--|--|--|--|--|   authorization.role.facade.js
+|--|--|--|--|--|--|   authorization.role.model.js
+|--|--|--|--|--|--|   authorization.roleUser.facade.js
+|--|--|--|--|--|--|   authorization.roleUser.model.js
+|--|--|--|--|--|   authorization.domain.event.js
+|--|--|--|--|--|   authorization.domain.exception.js
+|--|--|--|--|--|   authorization.domain.facade.js
+|--|--|--|--|--|   authorization.domain.module.js
+|--|--|--|--|--|   index.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authorization\infrastructure
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\authorization\infrastructure\subscribers
+|--|--|--|--|--|--|   authorization.communication.subscriber.js
+|--|--|--|--|--|   authorization.infrastructure.module.js
+|--|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\billing
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\billing\application
+|--|--|--|--|--|   billing.application.exception.js
+|--|--|--|--|--|   billing.application.module.js
+|--|--|--|--|--|   billing.controller.js
+|--|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\event
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\event\application
+|--|--|--|--|--|   event.application.event.js
+|--|--|--|--|--|   event.application.module.js
+|--|--|--|--|--|   event.controller.js
+|--|--|--|--|--|   event.dto.js
+|--|--|--|--|--|   eventByUser.controller.js
+|--|--|--|--|--|   index.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\event\domain
+|--|--|--|--|--|   event.domain.facade.js
+|--|--|--|--|--|   event.domain.module.js
+|--|--|--|--|--|   event.model.js
+|--|--|--|--|--|   index.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\notification
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\notification\application
+|--|--|--|--|--|   notification.application.module.js
+|--|--|--|--|--|   notification.dto.js
+|--|--|--|--|--|   notificationByMe.controller.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\notification\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   notification.domain.facade.js
+|--|--|--|--|--|   notification.domain.module.js
+|--|--|--|--|--|   notification.model.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\notification\infrastructure
+|--|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\notification\infrastructure\subscribers
+|--|--|--|--|--|--|   notification.event.subscriber.js
+|--|--|--|--|--|--|   notification.notificationPreference.subscriber.js
+|--|--|--|--|--|--|   notification.passwordHistory.subscriber.js
+|--|--|--|--|--|--|   notification.passwordReset.subscriber.js
+|--|--|--|--|--|--|   notification.towServiceRequest.subscriber.js
+|--|--|--|--|--|--|   notification.towTruckType.subscriber.js
+|--|--|--|--|--|--|   notification.towTruckTypeFeatures.subscriber.js
+|--|--|--|--|--|--|   notification.userForm.subscriber.js
+|--|--|--|--|--|--|   notification.vehicleForm.subscriber.js
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   notification.infrastructure.module.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\notificationPreference
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\notificationPreference\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   notificationPreference.application.event.js
+|--|--|--|--|--|   notificationPreference.application.module.js
+|--|--|--|--|--|   notificationPreference.controller.js
+|--|--|--|--|--|   notificationPreference.dto.js
+|--|--|--|--|--|   notificationPreferenceByUser.controller.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\notificationPreference\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   notificationPreference.domain.facade.js
+|--|--|--|--|--|   notificationPreference.domain.module.js
+|--|--|--|--|--|   notificationPreference.model.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\passwordHistory
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\passwordHistory\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   passwordHistory.application.event.js
+|--|--|--|--|--|   passwordHistory.application.module.js
+|--|--|--|--|--|   passwordHistory.controller.js
+|--|--|--|--|--|   passwordHistory.dto.js
+|--|--|--|--|--|   passwordHistoryByUser.controller.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\passwordHistory\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   passwordHistory.domain.facade.js
+|--|--|--|--|--|   passwordHistory.domain.module.js
+|--|--|--|--|--|   passwordHistory.model.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\passwordReset
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\passwordReset\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   passwordReset.application.event.js
+|--|--|--|--|--|   passwordReset.application.module.js
+|--|--|--|--|--|   passwordReset.controller.js
+|--|--|--|--|--|   passwordReset.dto.js
+|--|--|--|--|--|   passwordResetByUser.controller.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\passwordReset\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   passwordReset.domain.facade.js
+|--|--|--|--|--|   passwordReset.domain.module.js
+|--|--|--|--|--|   passwordReset.model.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towServiceRequest
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towServiceRequest\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   towServiceRequest.application.event.js
+|--|--|--|--|--|   towServiceRequest.application.module.js
+|--|--|--|--|--|   towServiceRequest.controller.js
+|--|--|--|--|--|   towServiceRequest.dto.js
+|--|--|--|--|--|   towServiceRequestByTowTruckType.controller.js
+|--|--|--|--|--|   towServiceRequestByUser.controller.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towServiceRequest\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   towServiceRequest.domain.facade.js
+|--|--|--|--|--|   towServiceRequest.domain.module.js
+|--|--|--|--|--|   towServiceRequest.model.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towTruckType
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towTruckType\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   towTruckType.application.event.js
+|--|--|--|--|--|   towTruckType.application.module.js
+|--|--|--|--|--|   towTruckType.controller.js
+|--|--|--|--|--|   towTruckType.dto.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towTruckType\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   towTruckType.domain.facade.js
+|--|--|--|--|--|   towTruckType.domain.module.js
+|--|--|--|--|--|   towTruckType.model.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towTruckTypeFeatures
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towTruckTypeFeatures\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   towTruckTypeFeatures.application.event.js
+|--|--|--|--|--|   towTruckTypeFeatures.application.module.js
+|--|--|--|--|--|   towTruckTypeFeatures.controller.js
+|--|--|--|--|--|   towTruckTypeFeatures.dto.js
+|--|--|--|--|--|   towTruckTypeFeaturesByTowTruckType.controller.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\towTruckTypeFeatures\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   towTruckTypeFeatures.domain.facade.js
+|--|--|--|--|--|   towTruckTypeFeatures.domain.module.js
+|--|--|--|--|--|   towTruckTypeFeatures.model.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\upload
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\upload\application
+|--|--|--|--|--|   upload.application.module.js
+|--|--|--|--|--|   upload.controller.js
+|--|--|--|--|--|   upload.dto.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\user
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\user\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   user.application.module.js
+|--|--|--|--|--|   user.controller.js
+|--|--|--|--|--|   user.dto.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\user\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   user.domain.facade.js
+|--|--|--|--|--|   user.domain.module.js
+|--|--|--|--|--|   user.exception.js
+|--|--|--|--|--|   user.model.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\user\orchestrators
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   user.orchestrator.event.js
+|--|--|--|--|--|   user.orchestrator.js
+|--|--|--|--|--|   user.orchestrator.module.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\userForm
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\userForm\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   userForm.application.event.js
+|--|--|--|--|--|   userForm.application.module.js
+|--|--|--|--|--|   userForm.controller.js
+|--|--|--|--|--|   userForm.dto.js
+|--|--|--|--|--|   userFormByUser.controller.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\userForm\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   userForm.domain.facade.js
+|--|--|--|--|--|   userForm.domain.module.js
+|--|--|--|--|--|   userForm.model.js
+|--|--|--|--C:\grua-booking-system-25\server\dist\modules\vehicleForm
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\vehicleForm\application
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   vehicleForm.application.event.js
+|--|--|--|--|--|   vehicleForm.application.module.js
+|--|--|--|--|--|   vehicleForm.controller.js
+|--|--|--|--|--|   vehicleForm.dto.js
+|--|--|--|--|--|   vehicleFormByTowServiceRequest.controller.js
+|--|--|--|--|--C:\grua-booking-system-25\server\dist\modules\vehicleForm\domain
+|--|--|--|--|--|   index.js
+|--|--|--|--|--|   vehicleForm.domain.facade.js
+|--|--|--|--|--|   vehicleForm.domain.module.js
+|--|--|--|--|--|   vehicleForm.model.js
+|--|--|--|   app.application.module.js
+|--|--|--|   app.domain.module.js
+|--|--|--|   app.infrastructure.module.js
+|--|--|--|   app.migration.module.js
+|--|--|--|   app.module.js
+|--|--|--|   app.orchestrator.module.js
+|--|--|   main.js
+|--|--|   migration.js
+|--|--C:\grua-booking-system-25\server\scripts
+|--|--|   check-dependencies.ts
+|--|--|   database.migration.sh
+|--|--|   env.sh
+|--|--C:\grua-booking-system-25\server\src
+|--|--|--C:\grua-booking-system-25\server\src\core
+|--|--|--|--C:\grua-booking-system-25\server\src\core\accessControl
+|--|--|--|--|--C:\grua-booking-system-25\server\src\core\accessControl\decorators
+|--|--|--|--|--|   accessControl.role.decorator.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\core\accessControl\domain
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\core\accessControl\domain\role
+|--|--|--|--|--|--|   accessControl.role.manager.ts
+|--|--|--|--|--|--|   accessControl.role.ts
+|--|--|--|--|--|--|   index.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\core\accessControl\guards
+|--|--|--|--|--|   accessControl.guard.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\core\accessControl\internal
+|--|--|--|--|--|   accessControl.provider.ts
+|--|--|--|--|--|   accessControl.service.ts
+|--|--|--|--|--|   accessControl.type.ts
+|--|--|--|--|--|   accessControl.validator.ts
+|--|--|--|--|   accessControl.module.ts
+|--|--|--|--|   accessControl.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\core\authentication
+|--|--|--|--|   authentication.decorator.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\core\configuration
+|--|--|--|--|   configuration.module.ts
+|--|--|--|--|   configuration.service.object.ts
+|--|--|--|--|   configuration.service.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\core\cookie
+|--|--|--|--|   cookie.module.ts
+|--|--|--|--|   cookie.service.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\core\cors
+|--|--|--|--|   cors.module.ts
+|--|--|--|--|   cors.service.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\core\database
+|--|--|--|--|--C:\grua-booking-system-25\server\src\core\database\configuration
+|--|--|--|--|--|   database.configuration.module.ts
+|--|--|--|--|--|   database.configuration.service.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\core\database\helper
+|--|--|--|--|--|   ColumnNumericTransformer.ts
+|--|--|--|--|--|   database.helper.module.ts
+|--|--|--|--|--|   database.helper.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\core\database\migrations
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\core\database\migrations\scripts
+|--|--|--|--|--|--|   1702305820868-script.ts
+|--|--|--|--|--|--|   1702311247028-script.ts
+|--|--|--|--|--|   database.migration.module.ts
+|--|--|--|--|--|   database.migration.service.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\core\database\setup
+|--|--|--|--|--|   database.setup.module.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\core\exception
+|--|--|--|--|   exception.filter.ts
+|--|--|--|--|   exception.module.ts
+|--|--|--|--|   exception.service.ts
+|--|--|--|--|   exception.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\core\logging
+|--|--|--|--|   index.ts
+|--|--|--|--|   logging.interceptor.ts
+|--|--|--|--|   logging.module.ts
+|--|--|--|--|   logging.service.ts
+|--|--|--C:\grua-booking-system-25\server\src\helpers
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\context
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\date
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\dto
+|--|--|--|--|   dto.helper.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\file
+|--|--|--|--|   file.helper.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\hash
+|--|--|--|--|   hash.helper.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\regex
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\request
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\string
+|--|--|--|--|   string.helper.test.ts
+|--|--|--|--|   string.helper.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\helpers\utility
+|--|--|--|--|   index.ts
+|--|--|--C:\grua-booking-system-25\server\src\libraries
+|--|--|--|--C:\grua-booking-system-25\server\src\libraries\email
+|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\email\internal
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\email\internal\providers
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\email\internal\providers\mailjet
+|--|--|--|--|--|--|--|   mailjet.provider.ts
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\email\internal\providers\nodemailer
+|--|--|--|--|--|--|--|   nodemailer.provider.ts
+|--|--|--|--|--|--|   provider.ts
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\email\internal\templates
+|--|--|--|--|--|--|   authentication-forgot-password.template.html
+|--|--|--|--|--|--|   authentication-welcome.template.html
+|--|--|--|--|--|--|   authorization-verification-code.template.html
+|--|--|--|--|--|--|   base.html
+|--|--|--|--|--|--|   components.ts
+|--|--|--|--|--|--|   default.template.html
+|--|--|--|--|--|--|   email.template.service.ts
+|--|--|--|--|--|--|   style.css
+|--|--|--|--|--|   email.type.ts
+|--|--|--|--|   email.module.ts
+|--|--|--|--|   email.service.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\libraries\event
+|--|--|--|--|   event.module.ts
+|--|--|--|--|   event.service.ts
+|--|--|--|--|   event.type.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\libraries\google
+|--|--|--|--|   google.module.ts
+|--|--|--|--|   google.service.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\libraries\http
+|--|--|--|--|   http.module.ts
+|--|--|--|--|   http.service.ts
+|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\libraries\logger
+|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\logger\internal
+|--|--|--|--|--|   datadog.service.ts
+|--|--|--|--|--|   winston.service.ts
+|--|--|--|--|   index.ts
+|--|--|--|--|   logger.module.ts
+|--|--|--|--|   logger.service.ts
+|--|--|--|--|   logger.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\libraries\payment
+|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\payment\internal
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\payment\internal\providers
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\payment\internal\providers\stripe
+|--|--|--|--|--|--|--|   stripe.provider.ts
+|--|--|--|--|--|--|   provider.ts
+|--|--|--|--|--|   payment.type.ts
+|--|--|--|--|   index.ts
+|--|--|--|--|   payment.module.ts
+|--|--|--|--|   payment.service.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\libraries\socket
+|--|--|--|--|   index.ts
+|--|--|--|--|   socket.module.ts
+|--|--|--|--|   socket.server.ts
+|--|--|--|--|   socket.service.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\libraries\upload
+|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\upload\internal
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\upload\internal\providers
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\upload\internal\providers\aws
+|--|--|--|--|--|--|--|   upload.provider.aws.ts
+|--|--|--|--|--|--|--C:\grua-booking-system-25\server\src\libraries\upload\internal\providers\local
+|--|--|--|--|--|--|--|   upload.provider.local.ts
+|--|--|--|--|   index.ts
+|--|--|--|--|   upload.module.ts
+|--|--|--|--|   upload.provider.ts
+|--|--|--|--|   upload.service.ts
+|--|--|--|--|   upload.type.ts
+|--|--|--C:\grua-booking-system-25\server\src\modules
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\authentication
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authentication\application
+|--|--|--|--|--|   authentication.application.event.ts
+|--|--|--|--|--|   authentication.application.exception.ts
+|--|--|--|--|--|   authentication.application.module.ts
+|--|--|--|--|--|   authentication.controller.ts
+|--|--|--|--|--|   authentication.dto.ts
+|--|--|--|--|--|   authentication.google.controller.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authentication\domain
+|--|--|--|--|--|   authentication.domain.facade.ts
+|--|--|--|--|--|   authentication.domain.module.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authentication\infrastructure
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authentication\infrastructure\guards
+|--|--|--|--|--|--|   authentication.guard.service.ts
+|--|--|--|--|--|--|   authentication.guard.ts
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authentication\infrastructure\subscribers
+|--|--|--|--|--|--|   authentication.communication.subscriber.ts
+|--|--|--|--|--|   authentication.infrastructure.exception.ts
+|--|--|--|--|--|   authentication.infrastructure.module.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\authorization
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authorization\accessControl
+|--|--|--|--|--|   authorization.accessControl.exception.ts
+|--|--|--|--|--|   authorization.accessControl.module.ts
+|--|--|--|--|--|   authorization.accessControl.service.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authorization\application
+|--|--|--|--|--|   authorization.application.exception.ts
+|--|--|--|--|--|   authorization.application.module.ts
+|--|--|--|--|--|   authorization.controller.ts
+|--|--|--|--|--|   authorization.dto.ts
+|--|--|--|--|--|   authorizationByMe.controller.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authorization\domain
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authorization\domain\code
+|--|--|--|--|--|--|   authorization.code.facade.ts
+|--|--|--|--|--|--|   authorization.code.model.ts
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authorization\domain\role
+|--|--|--|--|--|--|   authorization.role.facade.ts
+|--|--|--|--|--|--|   authorization.role.model.ts
+|--|--|--|--|--|--|   authorization.roleUser.facade.ts
+|--|--|--|--|--|--|   authorization.roleUser.model.ts
+|--|--|--|--|--|   authorization.domain.event.ts
+|--|--|--|--|--|   authorization.domain.exception.ts
+|--|--|--|--|--|   authorization.domain.facade.ts
+|--|--|--|--|--|   authorization.domain.module.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authorization\infrastructure
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\authorization\infrastructure\subscribers
+|--|--|--|--|--|--|   authorization.communication.subscriber.ts
+|--|--|--|--|--|   authorization.infrastructure.module.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\billing
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\billing\application
+|--|--|--|--|--|   billing.application.exception.ts
+|--|--|--|--|--|   billing.application.module.ts
+|--|--|--|--|--|   billing.controller.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\event
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\event\application
+|--|--|--|--|--|   event.application.event.ts
+|--|--|--|--|--|   event.application.module.ts
+|--|--|--|--|--|   event.controller.ts
+|--|--|--|--|--|   event.dto.ts
+|--|--|--|--|--|   eventByUser.controller.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\event\domain
+|--|--|--|--|--|   event.domain.facade.ts
+|--|--|--|--|--|   event.domain.module.ts
+|--|--|--|--|--|   event.model.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\notification
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\notification\application
+|--|--|--|--|--|   notification.application.module.ts
+|--|--|--|--|--|   notification.dto.ts
+|--|--|--|--|--|   notificationByMe.controller.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\notification\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   notification.domain.facade.ts
+|--|--|--|--|--|   notification.domain.module.ts
+|--|--|--|--|--|   notification.model.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\notification\infrastructure
+|--|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\notification\infrastructure\subscribers
+|--|--|--|--|--|--|   notification.event.subscriber.ts
+|--|--|--|--|--|--|   notification.notificationPreference.subscriber.ts
+|--|--|--|--|--|--|   notification.passwordHistory.subscriber.ts
+|--|--|--|--|--|--|   notification.passwordReset.subscriber.ts
+|--|--|--|--|--|--|   notification.towServiceRequest.subscriber.ts
+|--|--|--|--|--|--|   notification.towTruckType.subscriber.ts
+|--|--|--|--|--|--|   notification.towTruckTypeFeatures.subscriber.ts
+|--|--|--|--|--|--|   notification.userForm.subscriber.ts
+|--|--|--|--|--|--|   notification.vehicleForm.subscriber.ts
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   notification.infrastructure.module.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\notificationPreference
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\notificationPreference\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   notificationPreference.application.event.ts
+|--|--|--|--|--|   notificationPreference.application.module.ts
+|--|--|--|--|--|   notificationPreference.controller.ts
+|--|--|--|--|--|   notificationPreference.dto.ts
+|--|--|--|--|--|   notificationPreferenceByUser.controller.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\notificationPreference\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   notificationPreference.domain.facade.ts
+|--|--|--|--|--|   notificationPreference.domain.module.ts
+|--|--|--|--|--|   notificationPreference.model.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\passwordHistory
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\passwordHistory\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   passwordHistory.application.event.ts
+|--|--|--|--|--|   passwordHistory.application.module.ts
+|--|--|--|--|--|   passwordHistory.controller.ts
+|--|--|--|--|--|   passwordHistory.dto.ts
+|--|--|--|--|--|   passwordHistoryByUser.controller.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\passwordHistory\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   passwordHistory.domain.facade.ts
+|--|--|--|--|--|   passwordHistory.domain.module.ts
+|--|--|--|--|--|   passwordHistory.model.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\passwordReset
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\passwordReset\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   passwordReset.application.event.ts
+|--|--|--|--|--|   passwordReset.application.module.ts
+|--|--|--|--|--|   passwordReset.controller.ts
+|--|--|--|--|--|   passwordReset.dto.ts
+|--|--|--|--|--|   passwordResetByUser.controller.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\passwordReset\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   passwordReset.domain.facade.ts
+|--|--|--|--|--|   passwordReset.domain.module.ts
+|--|--|--|--|--|   passwordReset.model.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\towServiceRequest
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\towServiceRequest\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   towServiceRequest.application.event.ts
+|--|--|--|--|--|   towServiceRequest.application.module.ts
+|--|--|--|--|--|   towServiceRequest.controller.ts
+|--|--|--|--|--|   towServiceRequest.dto.ts
+|--|--|--|--|--|   towServiceRequestByTowTruckType.controller.ts
+|--|--|--|--|--|   towServiceRequestByUser.controller.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\towServiceRequest\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   towServiceRequest.domain.facade.ts
+|--|--|--|--|--|   towServiceRequest.domain.module.ts
+|--|--|--|--|--|   towServiceRequest.model.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\towTruckType
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\towTruckType\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   towTruckType.application.event.ts
+|--|--|--|--|--|   towTruckType.application.module.ts
+|--|--|--|--|--|   towTruckType.controller.ts
+|--|--|--|--|--|   towTruckType.dto.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\towTruckType\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   towTruckType.domain.facade.ts
+|--|--|--|--|--|   towTruckType.domain.module.ts
+|--|--|--|--|--|   towTruckType.model.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\towTruckTypeFeatures
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\towTruckTypeFeatures\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   towTruckTypeFeatures.application.event.ts
+|--|--|--|--|--|   towTruckTypeFeatures.application.module.ts
+|--|--|--|--|--|   towTruckTypeFeatures.controller.ts
+|--|--|--|--|--|   towTruckTypeFeatures.dto.ts
+|--|--|--|--|--|   towTruckTypeFeaturesByTowTruckType.controller.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\towTruckTypeFeatures\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   towTruckTypeFeatures.domain.module.ts
+|--|--|--|--|--|   towTruckTypeFeatures.model.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\upload
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\upload\application
+|--|--|--|--|--|   upload.application.module.ts
+|--|--|--|--|--|   upload.controller.ts
+|--|--|--|--|--|   upload.dto.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\user
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\user\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   user.application.module.ts
+|--|--|--|--|--|   user.controller.ts
+|--|--|--|--|--|   user.dto.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\user\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   user.domain.facade.ts
+|--|--|--|--|--|   user.domain.module.ts
+|--|--|--|--|--|   user.exception.ts
+|--|--|--|--|--|   user.model.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\user\orchestrators
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   user.orchestrator.event.ts
+|--|--|--|--|--|   user.orchestrator.module.ts
+|--|--|--|--|--|   user.orchestrator.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\userForm
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\userForm\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   userForm.application.event.ts
+|--|--|--|--|--|   userForm.application.module.ts
+|--|--|--|--|--|   userForm.controller.ts
+|--|--|--|--|--|   userForm.dto.ts
+|--|--|--|--|--|   userFormByUser.controller.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\userForm\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   userForm.domain.facade.ts
+|--|--|--|--|--|   userForm.domain.module.ts
+|--|--|--|--|--|   userForm.model.ts
+|--|--|--|--C:\grua-booking-system-25\server\src\modules\vehicleForm
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\vehicleForm\application
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   vehicleForm.application.event.ts
+|--|--|--|--|--|   vehicleForm.application.module.ts
+|--|--|--|--|--|   vehicleForm.controller.ts
+|--|--|--|--|--|   vehicleForm.dto.ts
+|--|--|--|--|--|   vehicleFormByTowServiceRequest.controller.ts
+|--|--|--|--|--C:\grua-booking-system-25\server\src\modules\vehicleForm\domain
+|--|--|--|--|--|   index.ts
+|--|--|--|--|--|   vehicleForm.domain.facade.ts
+|--|--|--|--|--|   vehicleForm.domain.module.ts
+|--|--|--|--|--|   vehicleForm.model.ts
+|--|--|--|   app.application.module.ts
+|--|--|--|   app.domain.module.ts
+|--|--|--|   app.infrastructure.module.ts
+|--|--|--|   app.migration.module.ts
+|--|--|--|   app.module.ts
+|--|--|--|   app.orchestrator.module.ts
+|--|--|   main.ts
+|--|--|   migration.ts
+|--|   .eslintrc.js
+|--|   .gitignore
+|--|   .prettierrc
+|--|   docker-compose.yml
+|--|   nest-cli.json
+|--|   package-lock.json
+|--|   package.json
+|--|   Procfile
+|--|   tsconfig.build.json
+|--|   tsconfig.json
+|   .gitignore
+|   export-directory-tree.ps1
+|   output.txt
+|   reorganize.js
+|   salidatree.txt
