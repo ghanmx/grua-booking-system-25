@@ -22,7 +22,8 @@ Actions:
         - Run: COMMIT_MESSAGE="$(git log -n 1 $TRIGGER_COMMIT_ID --oneline)"
         - Run: RELEASE_PREFIX='chore(release):'
         - Run: IS_RELEASE_COMMIT=false
-        - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a release commit' && IS_RELEASE_COMMIT=true; fi
+        - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a
+            release commit' && IS_RELEASE_COMMIT=true; fi
   build_and_commit:
     Identifier: aws/build@v1
     Inputs:
@@ -40,7 +41,8 @@ Actions:
             - "**/*"
     Configuration:
       Steps:
-        - Run: if $IS_RELEASE_COMMIT; then  echo 'This is a release commit, skipping'; else chmod +x release.sh && ./release.sh; fi
+        - Run: if $IS_RELEASE_COMMIT; then  echo 'This is a release commit, skipping';
+            else chmod +x release.sh && ./release.sh; fi
       Container:
         Registry: CODECATALYST
         Image: CodeCatalystLinux_x86_64:2022_11
@@ -54,10 +56,13 @@ Actions:
       Variables:
         - Name: IS_RELEASE_COMMIT
           Value: ${check_commit.IS_RELEASE_COMMIT}
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    Configuration:
+      InputArtifactName: codebase
+      PackageJSONPath: package.json
+      TimeoutInSeconds: "120"
+      ArtifactPackagePath: dist/js/*.tgz
     DependsOn:
       - build_and_commit
-    Configuration:
-      ArtifactPackagePath: dist/js/*.tgz
-      PackageJSONPath: package.json
-      InputArtifactName: codebase
-      TimeoutInSeconds: "120"
