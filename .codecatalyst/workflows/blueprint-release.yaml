@@ -1,3 +1,10 @@
+Triggers:
+  - Type: PULLREQUEST
+    Branches:
+      - main
+      - apply-blueprint-blueprint-builder-a8369
+    Events:
+      - OPEN
 SchemaVersion: 1.0
 Name: grua-booking
 Actions:
@@ -17,10 +24,16 @@ Actions:
         - Run: COMMIT_MESSAGE="$(git log -n 1 $TRIGGER_COMMIT_ID --oneline)"
         - Run: RELEASE_PREFIX='chore(release):'
         - Run: IS_RELEASE_COMMIT=false
-        - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a release commit' && IS_RELEASE_COMMIT=true; fi
+        - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a
+            release commit' && IS_RELEASE_COMMIT=true; fi
+      Container:
+        Registry: CODECATALYST
+        Image: CodeCatalystLinux_x86_64:2024_03
     Compute:
       Type: EC2
       Fleet: Linux.x86-64.Large
+    Environment:
+      Name: pruebaci
 
   build_and_commit:
     Identifier: aws/build@v1
@@ -39,12 +52,18 @@ Actions:
             - "**/*"
     Configuration:
       Steps:
-        - Run: if $IS_RELEASE_COMMIT; then  echo 'This is a release commit, skipping'; else chmod +x release.sh && ./release.sh; fi
+        - Run: if $IS_RELEASE_COMMIT; then  echo 'This is a release commit, skipping';
+            else chmod +x release.sh && ./release.sh; fi
+      Container:
+        Registry: CODECATALYST
+        Image: CodeCatalystLinux_x86_64:2024_03
     Compute:
       Type: EC2
       Fleet: Linux.x86-64.Large
     DependsOn:
       - check_commit
+    Environment:
+      Name: pruebaci
 
   publish_blueprint:
     Identifier: aws/publish-blueprint-action@v1
