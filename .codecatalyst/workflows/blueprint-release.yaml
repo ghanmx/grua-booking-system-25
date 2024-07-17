@@ -1,5 +1,3 @@
-SchemaVersion: 1.0
-Name: grua-booking
 Triggers:
   - Type: PULLREQUEST
     Branches:
@@ -7,6 +5,8 @@ Triggers:
       - apply-blueprint-blueprint-builder-a8369
     Events:
       - OPEN
+SchemaVersion: 1.0
+Name: grua-booking
 
 Actions:
   check_commit:
@@ -26,11 +26,15 @@ Actions:
         - Run: RELEASE_PREFIX='chore(release):'
         - Run: IS_RELEASE_COMMIT=false
         - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a release commit' && IS_RELEASE_COMMIT=true; fi
+      Container:
+        Registry: CODECATALYST
+        Image: "CodeCatalystLinux_x86_64:2024_03"
     Compute:
       Type: EC2
-      Fleet: Linux.x86-64.Large
+      Fleet: "Linux.x86-64.Large"
     Environment:
       Name: pruebaci
+
 
   build_and_commit:
     Identifier: aws/build@v1
@@ -49,33 +53,21 @@ Actions:
             - "**/*"
     Configuration:
       Steps:
-        - Run: if $IS_RELEASE_COMMIT; then  echo 'This is a release commit, skipping'; else chmod +x release.sh && ./release.sh; fi
+        - Run: |
+            git config --global user.name "YourUserName"
+            git config --global user.email "youremail@example.com"
+            git config --global credential.helper 'cache --timeout=3600'
+            echo "https://<your-username>:<your-token>@git.us-west-2.github.source.3p.codecatalyst.aws/v1/pruebadeamazon/Pruebaproject/grua-booking-system-25/" > ~/.git-credentials
+        - Run: if $IS_RELEASE_COMMIT; then echo 'This is a release commit, skipping'; else chmod +x release.sh && ./release.sh; fi
+      Container:
+        Registry: CODECATALYST
+        Image: "CodeCatalystLinux_x86_64:2024_03"
     Compute:
       Type: EC2
-      Fleet: Linux.x86-64.Large
+      Fleet: "Linux.x86-64.Large"
     DependsOn:
       - check_commit
     Environment:
       Name: pruebaci
 
-  publish_blueprint:
-    Identifier: aws/publish-blueprint-action@v1
-    Inputs:
-      Sources:
-        - WorkflowSource
-      Artifacts:
-        - codebase
-      Variables:
-        - Name: IS_RELEASE_COMMIT
-          Value: ${check_commit.IS_RELEASE_COMMIT}
-    Compute:
-      Type: EC2
-      Fleet: Linux.x86-64.Large
-    Configuration:
-      InputArtifactName: codebase
-      PackageJSONPath: package.json
-      TimeoutInSeconds: "120"
-      ArtifactPackagePath: dist/js/*.tgz
-    DependsOn:
-      - build_and_commit
-      - check_commit
+
