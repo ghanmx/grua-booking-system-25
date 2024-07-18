@@ -1,28 +1,78 @@
-name: Build and Deploy
+SchemaVersion: 1.0
+Name: grua-booking
+Actions:
+  check_commit:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      AutoDiscoverReports:
+        Enabled: false
+      Variables:
+        - IS_RELEASE_COMMIT
+    Configuration:
+      Steps:
+        - Run: |
+            export TRIGGER_COMMIT_ID=$CATALYST_EVENT_SHA
+            export COMMIT_MESSAGE="$(git log -n 1 $TRIGGER_COMMIT_ID --oneline)"
+            export RELEASE_PREFIX='chore(release):'
+            export IS_RELEASE_COMMIT=false
+            if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then
+              echo 'this is a release commit'
+              export IS_RELEASE_COMMIT=true
+            fi
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
 
-on:
-  push:
-    branches:
-      - main
+  build_and_commit:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+      Variables:
+        - Name: IS_RELEASE_COMMIT
+          Value: ${{ steps.check_commit.outputs.Variables.IS_RELEASE_COMMIT }}
+    Outputs:
+      AutoDiscoverReports:
+        Enabled: false
+      Artifacts:
+        - Name: codebase
+          Files:
+            - "**/*"
+    Configuration:
+      Steps:
+        - Run: |
+            if $IS_RELEASE_COMMIT; then
+              echo 'This is a release commit, skipping'
+            else
+              chmod +x release.sh && ./release.sh
+            fi
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    DependsOn:
+      - check_commit
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build the project
-      run: npm run build
-
-    - name: Deploy
-      run: npm run deploy
+  publish_blueprint:
+    Identifier: aws/publish-blueprint-action@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+      Artifacts:
+        - codebase
+      Variables:
+        - Name: IS_RELEASE_COMMIT
+          Value: ${{ steps.check_commit.outputs.Variables.IS_RELEASE_COMMIT }}
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    Configuration:
+      InputArtifactName: codebase
+      PackageJSONPath: package.json
+      TimeoutInSeconds: "120"
+      ArtifactPackagePath: dist/js/*.tgz
+    DependsOn:
+      - build_and_commit
+      - check_commit
