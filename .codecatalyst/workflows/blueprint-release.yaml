@@ -21,6 +21,11 @@ Actions:
         Enabled: false
       Variables:
         - IS_RELEASE_COMMIT
+      Reports:
+        UntitledReport:
+          Format: SARIFSCA
+          IncludePaths:
+            - output/report
     Configuration:
       Steps:
         - Run: TRIGGER_COMMIT_ID=$CATALYST_EVENT_SHA
@@ -31,12 +36,14 @@ Actions:
             release commit' && IS_RELEASE_COMMIT=true; fi
       Container:
         Registry: CODECATALYST
-        Image: "CodeCatalystLinux_x86_64:2024_03"
+        Image: CodeCatalystLinux_x86_64:2024_03
     Compute:
       Type: EC2
-      Fleet: "Linux.x86-64.Large"
+      Fleet: Linux.x86-64.Large
     Environment:
       Name: pruebaci
+    Packages:
+      ExportAuthorizationToken: true
 
   build_and_commit:
     Identifier: aws/build@v1
@@ -55,20 +62,25 @@ Actions:
             - "**/*"
     Configuration:
       Steps:
-        - Run: |
+        - Run: >-
             git config --global user.name "ghanmx"
+
             git config --global user.email "israelreyes16.IR@gmail.com"
+
             git config --global credential.helper 'cache --timeout=3600'
+
             echo "https://<your-username>:<your-token>@git.us-west-2.github.source.3p.codecatalyst.aws/v1/pruebadeamazon/Pruebaproject/grua-booking-system-25/" > ~/.git-credentials
         - Run: if $IS_RELEASE_COMMIT; then echo 'This is a release commit, skipping'; else
             chmod +x release.sh && ./release.sh; fi
       Container:
         Registry: CODECATALYST
-        Image: "CodeCatalystLinux_x86_64:2024_03"
+        Image: CodeCatalystLinux_x86_64:2024_03
     Compute:
       Type: EC2
-      Fleet: "Linux.x86-64.Large"
+      Fleet: Linux.x86-64.Large
     DependsOn:
       - check_commit
     Environment:
       Name: pruebaci
+    Packages:
+      ExportAuthorizationToken: true
