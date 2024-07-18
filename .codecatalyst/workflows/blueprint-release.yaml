@@ -56,8 +56,8 @@ Actions:
     Configuration:
       Steps:
         - Run: |
-            git config --global user.name "YourUserName"
-            git config --global user.email "youremail@example.com"
+            git config --global user.name "ghanmx"
+            git config --global user.email "israelreyes16.IR@gmail.com"
             git config --global credential.helper 'cache --timeout=3600'
             echo "https://<your-username>:<your-token>@git.us-west-2.github.source.3p.codecatalyst.aws/v1/pruebadeamazon/Pruebaproject/grua-booking-system-25/" > ~/.git-credentials
         - Run: if $IS_RELEASE_COMMIT; then echo 'This is a release commit, skipping'; else
