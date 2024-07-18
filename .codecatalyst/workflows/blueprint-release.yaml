@@ -1,3 +1,5 @@
+Compute:
+  Type: EC2
 Triggers:
   - Type: PULLREQUEST
     Branches:
@@ -25,7 +27,8 @@ Actions:
         - Run: COMMIT_MESSAGE="$(git log -n 1 $TRIGGER_COMMIT_ID --oneline)"
         - Run: RELEASE_PREFIX='chore(release):'
         - Run: IS_RELEASE_COMMIT=false
-        - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a release commit' && IS_RELEASE_COMMIT=true; fi
+        - Run: if grep -q "$RELEASE_PREFIX" <<< "$COMMIT_MESSAGE"; then echo 'this is a
+            release commit' && IS_RELEASE_COMMIT=true; fi
       Container:
         Registry: CODECATALYST
         Image: "CodeCatalystLinux_x86_64:2024_03"
@@ -34,7 +37,6 @@ Actions:
       Fleet: "Linux.x86-64.Large"
     Environment:
       Name: pruebaci
-
 
   build_and_commit:
     Identifier: aws/build@v1
@@ -58,7 +60,8 @@ Actions:
             git config --global user.email "youremail@example.com"
             git config --global credential.helper 'cache --timeout=3600'
             echo "https://<your-username>:<your-token>@git.us-west-2.github.source.3p.codecatalyst.aws/v1/pruebadeamazon/Pruebaproject/grua-booking-system-25/" > ~/.git-credentials
-        - Run: if $IS_RELEASE_COMMIT; then echo 'This is a release commit, skipping'; else chmod +x release.sh && ./release.sh; fi
+        - Run: if $IS_RELEASE_COMMIT; then echo 'This is a release commit, skipping'; else
+            chmod +x release.sh && ./release.sh; fi
       Container:
         Registry: CODECATALYST
         Image: "CodeCatalystLinux_x86_64:2024_03"
@@ -69,5 +72,3 @@ Actions:
       - check_commit
     Environment:
       Name: pruebaci
-
-
