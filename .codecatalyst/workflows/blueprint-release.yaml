@@ -84,3 +84,22 @@ Actions:
       Name: pruebaci
     Packages:
       ExportAuthorizationToken: true
+  AmazonS3Publish_8f:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/s3-publish@v1.1.0
+    # Required; You can use an environment to access AWS resources.
+    Environment:
+      Name: pruebaci
+    # Specifies the source and/or artifacts to pass to the action as input.
+    Inputs:
+      # Optional
+      Sources:
+        - WorkflowSource # This specifies that the action requires this Workflow as a source
+      Artifacts:
+        - codebase
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large # Defines the action's properties.
+    Configuration:
+      DestinationBucketName: awspruebadeamazon
+      SourcePath: .
