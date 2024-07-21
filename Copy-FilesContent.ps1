@@ -1,4 +1,4 @@
-function Copy-FilesContent {
+|function Copy-FilesContent {
     param (
         [Parameter(Mandatory = $true)]
         [string]$Directory,
