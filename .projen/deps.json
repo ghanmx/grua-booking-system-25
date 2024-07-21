@@ -2,12 +2,10 @@
   "dependencies": [
     {
       "name": "@amazon-codecatalyst/blueprint-util.cli",
-      "version": "0.3.146",
       "type": "build"
     },
     {
       "name": "@amazon-codecatalyst/blueprint-util.projen-blueprint",
-      "version": "0.3.146",
       "type": "build"
     },
     {
@@ -82,32 +80,26 @@
     },
     {
       "name": "@amazon-codecatalyst/blueprint-component.dev-environments",
-      "version": "0.3.146",
       "type": "runtime"
     },
     {
       "name": "@amazon-codecatalyst/blueprint-component.environments",
-      "version": "0.3.146",
       "type": "runtime"
     },
     {
       "name": "@amazon-codecatalyst/blueprint-component.issues",
-      "version": "0.3.146",
       "type": "runtime"
     },
     {
       "name": "@amazon-codecatalyst/blueprint-component.source-repositories",
-      "version": "0.3.146",
       "type": "runtime"
     },
     {
       "name": "@amazon-codecatalyst/blueprint-component.workflows",
-      "version": "0.3.146",
       "type": "runtime"
     },
     {
       "name": "@amazon-codecatalyst/blueprints.blueprint",
-      "version": "0.3.147",
       "type": "runtime"
     },
     {
